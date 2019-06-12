@@ -46,7 +46,7 @@ The schema for the staging tables is shown below:
 
 ![ERD Diagram](https://github.com/troyjc/data-warehouse-project/blob/master/docs/Redshift%20Staging%20ERD.png)
 
-<img src="https://github.com/troyjc/data-warehouse-project/blob/master/docs/Redshift%20Staging%20ERD.png" alt="ERD Diagram" hspace="100">
+<img src="https://github.com/troyjc/data-warehouse-project/blob/master/docs/Redshift%20Staging%20ERD.png" alt="ERD Diagram" hspace="50" width="200">
 
 # Running
 I used a multi-node cluster with four nodes. After running `create_tables.py` to create the tables, I used the Query Editor to check the table schemas.
