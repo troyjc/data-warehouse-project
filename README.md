@@ -31,7 +31,7 @@ The COPY command leverages the Amazon Redshift parallel processing architecture 
 To load data from Amazon S3, COPY must have LIST access to the bucket and GET access for the bucket objects.
 
 When you launch a redshift cluster create it with an IAM role that has read access to S3.
-Add the redshift database name and the IAM role info to `dwh.cfg`.
+Add the redshift database name, host name, database user name and password, and the IAM role info to `dwh.cfg`.
 
 ## JSON Files
 
@@ -46,7 +46,7 @@ The schema for the staging tables is shown below:
 
 ![ERD Diagram](https://github.com/troyjc/data-warehouse-project/blob/master/docs/Redshift%20Staging%20ERD.png)
 
-# Running
+# Testing
 I used a multi-node cluster with four nodes. After running `create_tables.py` to create the tables, I used the Query Editor to check the table schemas.
 
 After running `etl.py` I looked at the fact and partition tables and ran some sample queries.
