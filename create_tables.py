@@ -4,7 +4,7 @@ from sql_queries import create_table_queries, drop_table_queries
 
 
 def drop_tables(cur, conn):
-    """Drops the existing staging, fact, and dimension Redshift tables.
+    """Drop the existing staging, fact, and dimension Redshift tables.
     Args:
         cur (cursor): Psycopg client side cursor.
         conn (connection): Psycopg database session.
