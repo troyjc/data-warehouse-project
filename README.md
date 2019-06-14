@@ -51,6 +51,45 @@ I used a multi-node cluster with four nodes. After running `create_tables.py` to
 
 After running `etl.py` I looked at the fact and partition tables and ran some sample queries.
 
+```sql
+WITH counts AS (
+  SELECT user_id, COUNT(*) AS num_plays
+  FROM songplay
+  GROUP BY user_id
+)
+SELECT user_id
+FROM counts
+WHERE num_plays = (SELECT MAX(num_plays) FROM counts);
+```
+
+Returns a `user_id` of 80.
+
+```sql
+SELECT songplay_id,
+       start_time,
+       session_id,
+       first_name,
+       last_name,
+       users.level,
+       songplay.location,
+       gender,
+       artist.artist_id,
+       song.song_id,
+       name,
+       title,
+       year,
+       duration
+FROM songplay
+JOIN users
+ON songplay.user_id = users.user_id
+   AND songplay.user_id = 80
+JOIN song ON songplay.song_id = song.song_id
+JOIN artist ON songplay.artist_id = artist.artist_id
+ORDER BY start_time DESC;
+```
+
+The query above returns the list of songs that `user_id` of 80 played.
+
 # Star Schema
 There is one fact table named `songplay` and four dimension tables. The star schema is optimized for queries on song play analysis, so the `songplay` table uses a distribution style of key distribution for the fact table with the `user_id` column as the key. The `users` dimension table also uses key distribution with the `user_id` column as the key.
 
